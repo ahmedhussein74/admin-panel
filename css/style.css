@@ -5,3 +5,6 @@ th{
 td{
   background-color: #343a40;
 }
+.dropdown-menu{
+  min-width: 0;
+}
