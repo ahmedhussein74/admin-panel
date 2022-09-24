@@ -25,13 +25,14 @@ if (isset($_POST['reset'])) {
 if (isset($_GET['delete'])) {
   $id = $_GET['delete'];
   $delete = "DELETE FROM employee WHERE id =$id ";
+
+  $selectOne = "SELECT * FROM employee where id =$id";
+  $ss = mysqli_query($connication, $selectOne);
+
+  $row = mysqli_fetch_assoc($ss);
+  $image = $row['image'];
+  unlink("$image");
   mysqli_query($connication, $delete);
-  $myJS = <<<EOT
-  <script type='text/javascript'>
-      window.location.replace("/odc/S6/employee/index.php");
-  </script>
-  EOT;
-  echo ($myJS);
 }
 ?>
 
